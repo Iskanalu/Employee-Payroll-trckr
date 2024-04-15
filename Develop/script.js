@@ -3,8 +3,27 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
 // Collect employee data
 const collectEmployees = function() {
+  
+  let another = true;
+
+  const employees = [];
+  while (another) {
+  const firstname = prompt("Enter First Name");
+  const lastname = prompt("Enter Last Name");
+  const salary = prompt("Enter Salary");
+  another = confirm("Do you want to add zxanother employee?\nEither OK or CANCEL");
+
+  console.log(firstname);
+  console.log(lastname);
+  console.log(salary);
+  console.log(another);
+  
+  const Employee = {firstName: firstname, lastName: lastname, Salary: salary}; 
+  employees.push(Employee);
+  }
+  return employees;
   // TODO: Get user input to create and return an array of employee objects
-}
+} 
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
@@ -46,7 +65,7 @@ const displayEmployees = function(employeesArray) {
 
     const salaryCell = document.createElement("td");
     // Format the salary as currency
-    salaryCell.textContent = currentEmployee.salary.toLocaleString("en-US",{
+    salaryCell.textContent = currentEmployee?.salary.toLocaleString("en-US",{
       style:"currency",
       currency:"USD"
     });
