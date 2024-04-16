@@ -11,24 +11,31 @@ const collectEmployees = function() {
   const firstname = prompt("Enter First Name");
   const lastname = prompt("Enter Last Name");
   const salary = prompt("Enter Salary");
-  another = confirm("Do you want to add zxanother employee?\nEither OK or CANCEL");
+  another = confirm("Do you want to add another employee?\nEither OK or CANCEL");
 
+ const salaryNumber =parseInt(salary);
   console.log(firstname);
   console.log(lastname);
   console.log(salary);
   console.log(another);
   
-  const Employee = {firstName: firstname, lastName: lastname, Salary: salary}; 
+  const Employee = {firstName: firstname, lastName: lastname, salary: salaryNumber}; 
   employees.push(Employee);
   }
   return employees;
-  // TODO: Get user input to create and return an array of employee objects
 } 
 
-// Display the average salary
+
 const displayAverageSalary = function(employeesArray) {
-  // TODO: Calculate and display the average salary
+
+  const sum = employeesArray.reduce((acc,curr) => acc + curr.salary, 0);
+
+  const average = sum / employeesArray.length;
+
+  console.log(`The average of the employees salary is: ${average}`);
+  
 }
+
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
@@ -65,7 +72,7 @@ const displayEmployees = function(employeesArray) {
 
     const salaryCell = document.createElement("td");
     // Format the salary as currency
-    salaryCell.textContent = currentEmployee?.salary.toLocaleString("en-US",{
+    salaryCell.textContent = currentEmployee?.salary?.toLocaleString("en-US",{
       style:"currency",
       currency:"USD"
     });
